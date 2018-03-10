@@ -1,17 +1,86 @@
+/******************************************************************************
+ *  Purpose: Class containing logical functions.
+ *
+ *  @author  Rohini
+ *  @version 1.0
+ *  @since   06-03-2018
+ *
+ ******************************************************************************/
+
 package com.bridgeit.utility;
 
 
 import java.util.LinkedHashSet;
 import com.bridgeit.programs.Stopwatch;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import java.util.*;
 import java.io.PrintWriter;  
 
 
 public class Utility {
 	
+
+	Scanner scanner;
+	public Utility() {
+		scanner =new Scanner(System.in); 
+	}
+	
 	/**
-	 * @param year
-	 * Leap year
+	 * Function to scan user entered String
+	 * @return scanned value
+	 */
+	public String inputString()
+	{
+		try {
+			return scanner.next();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return "";
+	}
+	/**
+	 * Function to scan user entered double value
+	 * @return scanned value
+	 */
+	public double inputDouble()
+	{
+		try {
+			return scanner.nextDouble();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return 1;
+	}
+	/**
+	 * Function to scan user entered integer value
+	 * @return scanned value
+	 */
+	public int inputInteger()
+	{
+		try {
+			return scanner.nextInt();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	return 1;
+	}
+	/**
+	 * Function to scan user entered boolean value
+	 * @return scanned value
+	 */
+	public boolean inputBoolean()
+	{
+		try {
+			return scanner.nextBoolean();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	return true;
+	}
+	/**
+	 * Function that Prints the answer for entered year is Leap year or not.
+	 * @param year is leapyear or not
 	 */
 	public void leapYear(int year) {
 		
@@ -41,9 +110,9 @@ public class Utility {
 	}
 	
 	/**
-	 * @param string
-	 * @return
-	 * Replace string
+	 *  Replace user entered string to string "Hello username How are you?" 
+	 * @param string accepted from user to be replaced
+	 * @return replaced string
 	 */
 	public String replaceString(String string)
 	{
@@ -55,33 +124,33 @@ public class Utility {
 	}
 
 	/**
-	 * @param range
-	 * Sum of harmonic series
+	 * Prints the sum of harmonic series
+	 * @param range till the sum is to be printed
 	 */
 	public void harmonicSeries(int range) {
 	
 	int i;
-	float sum=0;
+	float msum=0;
 	for(i=1;i<=range;i++)
 	{
-		sum=sum+(float)1/i;
+		msum=msum+(float)1/i;
 	}
-	System.out.println("Series sum is " +sum);
+	System.out.println("Series sum is " +msum);
 
 }
 	
 	/**
-	 * @param range
-	 *  Power of 2
+	 *  Function that Prints the  Power of 2
+	 * @param rangectill the power is to b found
 	 */
 	public void power(int range) {
 		
-		int i,result=0;
+		int i,mresult=0;
 		if(range>0 && range<31)
 		{	for(i=1;i<=range;i++)
 		   {
-			result=(int) Math.pow(2,i);
-		   System.out.println("2 ^ "+i+" = " +result);
+			mresult=(int) Math.pow(2,i);
+		   System.out.println("2 ^ "+i+" = " +mresult);
 	    	}
 		}
 		else
@@ -92,31 +161,31 @@ public class Utility {
 	}
 		
 	/**
-	 * @param range
-	 * Flipcoin
+	 * Function that Prints the percentage of head and tail after coin is flipped
+	 * @param range number of times the coin is flipped
 	 */
 	public void flipcoin(int range) {
 		
-		  int i,head=0,tail=0;
+		  int i,mhead=0,mtail=0;
 		 for (i=0;i<range;i++)
 		 { 
 			 if(Math.random()<0.5)
              		 
-				 head++;
+				 mhead++;
 			 else
-				 tail++;
+				 mtail++;
 		 }
 		
-		 double count=(double)head*100/range;
-	     double count1=(double)tail*100/range;
+		 double count=(double)mhead*100/range;
+	     double count1=(double)mtail*100/range;
 
 		 System.out.println("head is" +count +"%");
 		 System.out.println("tail is" +count1 +"%");
 	} 
 	  /**
-	 * @param range
-	 * Factors
-	 */
+	   * Function that Prints the Prime Factors of entered number
+	   * @param range entered number
+	   */
 	public void factor(int range) {
 		  int i;
 		  for (i = 2; i <= range; i++) {
@@ -132,20 +201,20 @@ public class Utility {
 	    }
 		  
 	  /**
-	 * @param strake
-	 * @param goal
-	 * @param trials
-	 * Gambler game
+	   * Prints percentage of wins and loss in Gambler Game
+	   * @param strake initial amount user have
+	   * @param goal to be achieved
+	   * @param trials to be played
 	 */
 	public void gambler(int strake,int goal,int trials) {
 		
-		  int bets=0,wins=0,j,loss=0;
+		  int mbets=0,mwins=0,j,mloss=0;
 		  for(j=0; j < trials; j++) 
 		  {
 	           int cash = strake;
 	            while (cash > 0 && cash < goal)
 	            {
-	                bets++;
+	                mbets++;
 	                if (Math.random() < 0.5)
 	                	cash++;     
 	                else                  
@@ -153,26 +222,26 @@ public class Utility {
 	              }
 	            if (cash == goal)
 	            {
-	            	wins++;   
+	            	mwins++;   
 	            }
-	            loss=trials-wins;
+	            mloss=trials-mwins;
 	           }
 		 
-		  System.out.println("Number of wins "+wins);
-		  System.out.println("Number of loss "+loss);
+		  System.out.println("Number of wins "+mwins);
+		  System.out.println("Number of loss "+mloss);
 	     
 	      
-	      int won=((wins*100)/trials);
-	      int los=((loss*100)/trials);
+	      int won=((mwins*100)/trials);
+	      int los=((mloss*100)/trials);
 	      
 	      System.out.println("Won percentage-"+won + "%" +" Loss percentage-" +los+ "%");
 	  }
 	  
 	  /**
-	 * @param xcoordinate
-	 * @param ycoordinate
-	 * Calculating distance
-	 */
+	   *Prints Eucledian distance
+	   * @param xcoordinate
+	   * @param ycoordinate
+	   */
 	public void eucledianDistance(int xcoordinate,int ycoordinate) {
 		  double distance;
 		  
@@ -183,9 +252,9 @@ public class Utility {
 	  
 	  
 	  /**
-	 * @param temperature
-	 * @param velocity
-	 * Temperature
+	   * Prints the Temperature
+	   * @param temperature accepted from user
+	   * @param velocity accepted from user
 	 */
 	public void windChill(double temperature,double velocity) {
 	  
@@ -205,30 +274,35 @@ public class Utility {
 	 }
 	  
 	  /**
-	 * @param number
-	 * Number of coupons
+	   *Functions that Generates the number of distinct coupons and prints the count for random values generated by system 
+	   * @param number of coupons to be generated
 	 */
-	public void coupon(int number) 
-	  {   
-		int count=0,i,value;
-		LinkedHashSet<Integer> lh=new LinkedHashSet<Integer>();
-		Random random=new Random();
-		for(i=0;i<number;i++)
-		{
-			value=random.nextInt(number);
-			count++;
-			lh.add(new Integer(value));
-			
-		}
-		
-		
-		System.out.println(count);
+	
+	public void coupon(int number)
+	  { 
+		int mcount=0;
+		int array[]=new int[number];
+	    for(int i=0;i<number;i++) {
+	    	array[i]=(int)((Math.random()*number)+1);
+	    	mcount++;
+	    	for(int j=0;j<i;j++) {
+	    		if(array[i]==array[j]) {
+	    			i--;
+	    			break;
+	    		}
+	    	}
+	    }
+	    for(int i=0;i<number;i++)
+	    System.out.println(array[i]);
+	   
+	    System.out.println("Count is" +mcount);
 	  }
+	
 		/**
+		 * Prints the roots of Quadratic equation
 		 * @param a			 
 		 * @param b
 		 * @param c
-		 * Quadratic equation
 		 */
 		public void quadratic(int a,int b,int c)
 		{
@@ -255,13 +329,13 @@ public class Utility {
 		}
 		
 		/**
-		 * @param array
-		 * @param length
-		 * Triplets.
+		 *  Prints the formation of Triplets and NonTriplets in array.
+		 * @param array acceprted from user 
+		 * @param length of array
 		 */
 		public void tripletsinarrays(int array[],int length) {
 		
-			int i,j,k,triplets=0,result,nontriplets=0;			
+			int i,j,k,mtriplets=0,result,mnontriplets=0;			
 			for(i=0;i<length-2;i++)
 			for(j=i+1;j<length-1;j++)
 			for(k=j+1;k<length;k++)
@@ -270,108 +344,121 @@ public class Utility {
 				if(result==0)
 				{
 				System.out.println("Triplets are  " +array[i]+" " + array[j] + " " +array[k]);
-				triplets++;
+				mtriplets++;
 				}
 				else {
 					System.out.println("Triplets are " +array[i] + array[j] +array[k]);
-				nontriplets++;}
+				mnontriplets++;}
 			}
-			System.out.println("Number of triplets is " +triplets);
-			System.out.println("Number of non triplets is " +nontriplets);
+			System.out.println("Number of triplets is " +mtriplets);
+			System.out.println("Number of non triplets is " +mnontriplets);
 	
 		}
 		
 		/**
-		 * @param choice
-		 * TwoDArray
+		 * Function to print the elements of TwoDArray
+		 * @param choice taken from user
 		 */
-		public static void twoDArrays(int choice) {
+		public void twodarray(int m,int n)
+		{
 			Scanner scanner=new Scanner(System.in);
-			switch(choice) {
-			case 1 :int rows,columns,i,j;
-				    System.out.println("Enter the number of rows and columns");
-					rows=scanner.nextInt();
-					columns=scanner.nextInt();
-					int [][] integerarray=new int[rows][columns];  
-					System.out.println("Enter the elements in array");
-					for(i=0;i<rows;i++)
-					{
-						for(j=0;j<columns;j++)
-						{
-							integerarray[i][j]=scanner.nextInt();
-						}
+			PrintWriter printwriter=new PrintWriter(System.out);
+			
+			
+			Integer arrayInt[][] = new Integer[m][n];
+			Double arraydouble[][] = new Double[m][n];
+			Boolean arrayboolen[][] = new Boolean[m][n];
+
+			printwriter.write("Enter your choice :");
+			printwriter.write("1.Integer array\n");
+
+			printwriter.write("2.Double array\n");
+
+			printwriter.write("3.Boolean array\n");
+			printwriter.flush();
+			int choice = scanner.nextInt();
+		
+			switch (choice) {
+			case 1:
+				printwriter.write("Integer array is\n");
+				printwriter.flush();
+
+				printwriter.write("Enter the elements\n");
+				printwriter.flush();
+
+				for (int i = 0; i < m; i++) {
+					for (int j = 0; j < n; j++) {
+						arrayInt[i][j] = scanner.nextInt();
+
 					}
-					for(i=0;i<rows;i++)
-					{
-						for(j=0;j<columns;j++) 
-						{
-					 
-					  PrintWriter writer = new PrintWriter(System.out);    
-				      writer.write(String.valueOf(integerarray[i][j])+"\n");        
-				      writer.flush(); 
-						}
-				     }
-					 break;
-			case 2 : double row,column,x,y;
-					 System.out.println("Enter the number of rows and columns");
-					 row=scanner.nextDouble();
-					 column=scanner.nextDouble();
-					 double [][] doublearray=new double[(int)row][(int)column];  
-					 System.out.println("Enter the elements in array");
-					 for(x=0;x<row;x++)
-					 {
-						 for(y=0;y<column;y++)
-						 {
-							 doublearray[(int)x][(int)y]=scanner.nextDouble();
-						 }
-					 }
-					 for(x=0;x<row;x++)
-					 {
-						 for(y=0;y<column;y++) 
-						 {
-			 
-							 PrintWriter writer = new PrintWriter(System.out);    
-							 writer.write(String.valueOf(doublearray[(int)x][(int)y])+"\n");        
-							 writer.flush(); 
-						 }
-					 }
-					 break;
-			case 3 : double roww,columnn,a,b;
-					 System.out.println("Enter the number of rows and columns");
-					 roww=scanner.nextDouble();
-					 columnn=scanner.nextDouble();
-					 boolean [][] booleanarray=new boolean[(int)roww][(int)columnn];  
-					 System.out.println("Enter the elements in array");
-					 for(a=0;a<roww;a++)
-					 {
-						 for(b=0;b<columnn;b++)
-						 {
-							 booleanarray[(int)a][(int)b]=scanner.nextBoolean();
-						 }
-					 }
-					 for(a=0;a<roww;a++)
-					 {
-						 for(b=0;b<columnn;b++) 
-						 {
-	 
-							 PrintWriter writer = new PrintWriter(System.out);    
-							 writer.write(String.valueOf(booleanarray[(int)a][(int)b])+"\n");        
-							 writer.flush(); 
-						 }
-					 }
-					 break;
-			default :System.out.println("Invalid choice");		 
-					 break;
+				}
+				printArray(arrayInt, m, n);
+				break;
+			case 2:
+				printwriter.write("Double array is\n");
+				printwriter.flush();
+
+				printwriter.write("Enter the elements\n");
+				printwriter.flush();
+
+				for (int i = 0; i < m; i++) {
+					for (int j = 0; j < n; j++) {
+						arraydouble[i][j] = scanner.nextDouble();
+
+					}
+				}
+				printArray(arraydouble, m, n);
+				break;
+			case 3:
+				printwriter.write("boolean array is\n");
+				printwriter.flush();
+
+				printwriter.write("Enter the elements\n");
+				printwriter.flush();
+
+				for (int i = 0; i < m; i++) {
+					for (int j = 0; j < n; j++) {
+						arrayboolen[i][j] = scanner.nextBoolean();
+
+					}
+				}
+				printArray(arrayboolen, m, n);
+				break;
+
+			default:
+				printwriter.println("Invalid choice");
+				printwriter.flush();
+				printwriter.close();
 			}
-			scanner.close();
 		}
+
 		/**
-		 * @param string
-		 * @param start
-		 * @param end
-		 * Permutation of String
+		 * Static function to print array
+		 * @param array to be printed
+		 * @param rows in array
+		 * @param columns in array
 		 */
-		public static void permutation(String string,int start,int end) {
+		public static <T> void printArray(T[][] array, int rows, int columns) {
+
+			PrintWriter printwriter = new PrintWriter(System.out);
+			for (int i = 0; i < rows; i++) {
+				for (int j = 0; j < columns; j++) {
+					printwriter.print(array[i][j] + " ");
+					printwriter.flush();
+				}
+	}
+		}
+	
+
+
+		
+		/**
+		 * Function to print the Permutation of String
+		 * @param string accepted from user whose permutation is to be found
+		 * @param start initial element of string
+		 * @param end last element of string
+		 */
+		public  void permutation(String string,int start,int end) {
 			if(start==end)
 			{
 				System.out.println(string);
@@ -389,11 +476,11 @@ public class Utility {
 		}
 
         /**
-         * @param string
-         * @param first
-         * @param end
+         * Function that Return the swapped String
+         * @param string to be swapped
+         * @param first echaracter of string
+         * @param end character of string
          * @return Swaped String
-         * String Swap
          */
         public static String stringSwap(String string,int first,int end)
         	
@@ -409,24 +496,26 @@ public class Utility {
 		}
  
        
-      
+        /**
+         * Returns the swapped String
+         */
             
-            long start=0;
-            long end=0;
+            long mstart=0;
+            long mend=0;
             boolean running=false;
             
             public long startMeth()
             {
-                this.start=System.currentTimeMillis();
+                this.mstart=System.currentTimeMillis();
                 this.running=true;
-                return start;
+                return mstart;
             }
             
             public long endMeth()
             {
-                this.end=System.currentTimeMillis();
+                this.mend=System.currentTimeMillis();
                 this.running=false;
-                return end;
+                return mend;
             }
             
             public long getelapes()
@@ -434,11 +523,11 @@ public class Utility {
                 long elapes=0;
                 if(running==true)
                 {
-                elapes=(System.currentTimeMillis()-start);
+                elapes=(System.currentTimeMillis()-mstart);
                 }
                 else
                 {
-                elapes=(end-start);
+                elapes=(mend-mstart);
                 }
                 return elapes;
                 
@@ -448,12 +537,9 @@ public class Utility {
 
         }
             
-            
-       }
-
        
 
-		
+}
 		
 		
 

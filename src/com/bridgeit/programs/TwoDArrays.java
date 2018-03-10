@@ -1,16 +1,28 @@
+
+/******************************************************************************
+ *  Purpose:  Prints 2 Dimensional Array.
+ *
+ *  @author  Rohini
+ *  @version 1.0
+ *  @since   05-03-2018
+ *
+ ******************************************************************************/
+
 package com.bridgeit.programs;
 
-import java.util.Scanner;
 import com.bridgeit.utility.Utility;
 
 public class TwoDArrays {
-  public static void main(String args[]) {
-	  int choice;
-	  Scanner scanner=new Scanner(System.in);
-	  System.out.println("Enter the choice");
-	  System.out.println("1-Integer\n2-Double\n3-Boolean");
-	  choice=scanner.nextInt();
-	  Utility.twoDArrays(choice);
-	  scanner.close();
-  }
+	public static void main(String args[]) {
+		int rows;
+		Utility utility = new Utility();
+		int columns;
+		System.out.print("Enter the rows\n");
+		rows = utility.inputInteger();
+		System.out.println("Enter the columns\n");
+		columns = utility.inputInteger();
+
+		utility.twodarray(rows, columns);
+	}
+
 }

@@ -1,7 +1,15 @@
+
+
+/******************************************************************************
+ *  Purpose: Find the roots of the equation a*x*x + b*x + c..
+ *
+ *  @author  Rohini
+ *  @version 1.0
+ *  @since   05-03-2018
+ *
+ ******************************************************************************/
+
 package com.bridgeit.programs;
-
-
-import java.util.Scanner;
 import com.bridgeit.utility.Utility;
 
 
@@ -10,17 +18,17 @@ public class Quadratic {
 public static void main(String args[]) {
 		
 		int a,b,c;
-		Scanner scanner=new Scanner(System.in);
+		Utility utility=new Utility();
 		System.out.println("Given quadratic equation:ax^2 + bx + c");
         System.out.print("Enter a:");
-		a=scanner.nextInt();
+		a=utility.inputInteger();
 		System.out.print("Enter b:");
-		b=scanner.nextInt();
+		b=utility.inputInteger();
 		System.out.print("Enter c:");
-		c=scanner.nextInt();
-		Utility utility=new Utility();
+		c=utility.inputInteger();
+	
 	    utility.quadratic(a,b,c);
-	    scanner.close();
+	    
 }
 	
 	
